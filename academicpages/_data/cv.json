@@ -1,0 +1,19 @@
+{
+  "name": "Bryce Wang",
+  "title": "PhD Student",
+  "education": [
+    {
+      "degree": "PhD in Computer Science",
+      "institution": "University of Technology",
+      "year": "2023 - Present"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Research Assistant",
+      "organization": "AI Lab",
+      "year": "2021 - 2023"
+    }
+  ],
+  "skills": ["Machine Learning", "Deep Learning", "Data Science"]
+}
