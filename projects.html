@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Bryce Wang</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #ffffff;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #10a37f, #1a73e8);
+            border-radius: 1px;
+        }
+
+        .nav-links a:hover {
+            color: #10a37f;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1a1a1a, #10a37f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 4rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+            text-align: center;
+        }
+
+        /* Project Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #10a37f, #1a73e8);
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: #f1f5f9;
+            color: #64748b;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            padding: 0.6rem 1.2rem;
+            background: #10a37f;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link:hover {
+            background: #0d8a6a;
+        }
+
+        .project-link.secondary {
+            background: #e2e8f0;
+            color: #1a1a1a;
+        }
+
+        .project-link.secondary:hover {
+            background: #cbd5e0;
+        }
+
+        /* Featured Project */
+        .featured-project {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            grid-column: 1 / -1;
+            padding: 3rem;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-project::before {
+            display: none;
+        }
+
+        .featured-project .project-title {
+            color: white;
+            font-size: 2rem;
+        }
+
+        .featured-project .project-description {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+        }
+
+        .featured-project .tech-tag {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .featured-project .project-link {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .featured-project .project-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: #f8fafc;
+            padding: 4rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #10a37f;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .content-section {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-project {
+                grid-column: 1;
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Bryce Wang</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Projects</h1>
+                <p class="hero-subtitle">Bringing ideas to life through code, research, and innovation</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Featured Projects</h2>
+            
+            <div class="projects-grid">
+                <div class="project-card featured-project">
+                    <div class="project-icon">🤖</div>
+                    <h3 class="project-title">AI Research Assistant</h3>
+                    <p class="project-description">An intelligent research assistant that helps academics discover relevant papers, summarize key findings, and generate research ideas. Built with large language models and vector databases for semantic search.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">OpenAI API</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">Pinecone</span>
+                        <span class="tech-tag">Streamlit</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">🚀 Live Demo</a>
+                        <a href="#" class="project-link">📁 GitHub</a>
+                        <a href="#" class="project-link">📄 Paper</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">🧠</div>
+                    <h3 class="project-title">Neural Architecture Search Tool</h3>
+                    <p class="project-description">An automated tool for discovering optimal neural network architectures using evolutionary algorithms and gradient-based optimization. Reduces manual hyperparameter tuning time by 80%.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">Ray Tune</span>
+                        <span class="tech-tag">Optuna</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">💻 Code</a>
+                        <a href="#" class="project-link secondary">📊 Results</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">🎨</div>
+                    <h3 class="project-title">Creative AI Studio</h3>
+                    <p class="project-description">A web application that combines multiple generative AI models for creative content creation, including text-to-image, image-to-image, and style transfer capabilities.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Stable Diffusion</span>
+                        <span class="tech-tag">AWS</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">🎨 Try It</a>
+                        <a href="#" class="project-link secondary">🔧 Code</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">📊</div>
+                    <h3 class="project-title">Data Visualization Dashboard</h3>
+                    <p class="project-description">Interactive dashboard for exploring large datasets with real-time analytics. Features advanced filtering, custom visualizations, and machine learning insights.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">D3.js</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">📈 Demo</a>
+                        <a href="#" class="project-link secondary">📁 Source</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">🔒</div>
+                    <h3 class="project-title">Privacy-Preserving ML Framework</h3>
+                    <p class="project-description">A federated learning framework that enables collaborative machine learning while preserving data privacy using differential privacy and secure aggregation.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">PySyft</span>
+                        <span class="tech-tag">Cryptography</span>
+                        <span class="tech-tag">Kubernetes</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">📖 Documentation</a>
+                        <a href="#" class="project-link secondary">💻 GitHub</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">🎮</div>
+                    <h3 class="project-title">AI Game Assistant</h3>
+                    <p class="project-description">An intelligent gaming companion that provides real-time strategy suggestions and learns from player behavior to improve recommendations over time.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Unity</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">ML-Agents</span>
+                        <span class="tech-tag">TensorFlow</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">🎮 Play</a>
+                        <a href="#" class="project-link secondary">📁 Code</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="content-section">
+                <h2 class="section-title">Project Impact</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5k+</div>
+                        <div class="stat-label">GitHub Stars</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Contributors</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Awards Won</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div style="background: white; border-radius: 16px; padding: 3rem; text-align: center; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
+                <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #1a1a1a;">Interested in Collaboration?</h2>
+                <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    I'm always excited to work on innovative projects and explore new technologies. Whether you have an idea for a research collaboration or want to build something amazing together, let's connect!
+                </p>
+                <a href="contact.html" style="display: inline-block; padding: 1rem 2rem; background: linear-gradient(135deg, #10a37f, #1a73e8); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: transform 0.3s ease;">
+                    Get In Touch
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Bryce Wang. All rights reserved.</p>
+    </footer>
+</body>
+</html>
