@@ -1,4 +1,4 @@
-# Academic Portfolio Website Template
+# Academic Portfolio Website Template (本网页只是暂时提供一个模版，网站展示的并非个人真实信息。目前个人网页正在创建中。)
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://brycewang-stanford.github.io)
 [![Jekyll](https://img.shields.io/badge/Jekyll-4.3.0-red)](https://jekyllrb.com/)
