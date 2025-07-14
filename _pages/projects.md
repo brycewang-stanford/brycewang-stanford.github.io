@@ -1,54 +1,25 @@
 ---
 permalink: /projects/
 title: "Projects"
-excerpt: "AI research reproduction and practical applications."
-feature_row:
-  - title: "AI Papers Reproduction"
-    excerpt: "Systematic reproduction of research from top AI conferences."
-    url: "https://github.com/brycewang-stanford/awesome-ai-papers-reproduction"
-    btn_label: "View Repository"
-    btn_class: "btn--primary"
-  - title: "TGI-Writer"
-    excerpt: "AI writing assistant for standardized test preparation."
-    url: "https://github.com/brycewang-stanford/TGI-Writer"
-    btn_label: "View Repository"
-    btn_class: "btn--primary"
-  - title: "LLM Gaming"
-    excerpt: "AI gaming platform using Large Language Models."
-    url: "https://github.com/brycewang-stanford/llm-play-games"
-    btn_label: "View Repository"
-    btn_class: "btn--primary"
 ---
 
-{% include feature_row %}
+## AI Papers Reproduction
+[GitHub Repository](https://github.com/brycewang-stanford/awesome-ai-papers-reproduction)
 
-## Key Projects
+Systematic reproduction of research papers from NeurIPS, ICML, ICLR, AAAI.
 
-### AI Papers Reproduction
-Collaborative platform for reproducing research papers from NeurIPS, ICML, ICLR, AAAI.
-
-**Current implementations**: MoLE (time series), XPatch (AAAI 2025)  
 **Tech**: Python, PyTorch, Time Series Analysis
 
-### TGI-Writer
-AI-powered writing assistant for TOEFL, GRE, IELTS preparation with real-time feedback.
+## TGI-Writer
+[GitHub Repository](https://github.com/brycewang-stanford/TGI-Writer)
 
-**Features**: 6 analysis panels, mobile-responsive design, sample generation  
+AI writing assistant for TOEFL, GRE, IELTS preparation with real-time feedback.
+
 **Tech**: Flask, OpenAI GPT-4o-mini, Tailwind CSS, LangChain
 
-### LLM Gaming
-Research platform exploring AI strategic capabilities through games.
+## LLM Gaming
+[GitHub Repository](https://github.com/brycewang-stanford/llm-play-games)
 
-**Games**: Gomoku, Chinese Idiom Chain  
-**Research**: GPT-4o vs GPT-4o-mini performance analysis  
+AI gaming platform exploring strategic capabilities through games like Gomoku and Chinese Idiom Chain.
+
 **Tech**: Python, OpenAI API, Game Theory
-
-## Technical Skills
-**Programming**: Python, JavaScript, HTML/CSS, SQL  
-**AI/ML**: PyTorch, TensorFlow, LangChain, OpenAI API  
-**Web**: Flask, Tailwind CSS  
-**Tools**: Git, Docker, Jupyter
-
-## Contact
-**Email**: bryce.wang@stanford.edu  
-**GitHub**: [@brycewang-stanford](https://github.com/brycewang-stanford)
