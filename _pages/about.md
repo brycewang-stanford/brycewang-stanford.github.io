@@ -24,5 +24,5 @@ Master of Science in Computer Technology, Graduation with Honors
 
 ## Contact
 
-**Email**: bryce.wang@stanford.edu  
+**Email**: brycew6m@stanford.edu  
 **GitHub**: [@brycewang-stanford](https://github.com/brycewang-stanford)

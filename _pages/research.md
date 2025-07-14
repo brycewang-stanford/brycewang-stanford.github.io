@@ -63,5 +63,5 @@ My work bridges theoretical AI research with practical social applications, emph
 
 ## Contact
 
-**Email**: bryce.wang@stanford.edu  
+**Email**: brycew6m@stanford.edu  
 **GitHub**: [@brycewang-stanford](https://github.com/brycewang-stanford)
