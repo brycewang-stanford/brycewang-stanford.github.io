@@ -21,6 +21,8 @@ Applied Data Science professional with expertise in AI research reproduction and
 
 **[LLM Gaming](https://github.com/brycewang-stanford/llm-play-games)** - AI gaming platform using Large Language Models
 
+[View all projects →](/projects/)
+
 ## Skills
 
 **Programming**: Python, JavaScript, SQL  
