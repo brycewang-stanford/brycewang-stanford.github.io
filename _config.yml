@@ -19,7 +19,7 @@ email: "bryce.wang@stanford.edu"
 description: >- # this means to ignore newlines until "baseurl:"
   Applied Data Science professional specializing in AI research reproduction and practical applications.
 twitter_username: bryceywang
-github_username: bryceywang
+github_username: bryceywang-stanford 
 minimal_mistakes_skin: default
 search: true
 
@@ -58,7 +58,7 @@ plugins:
 author:
   name   : "Bryce Wang"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "Applied Data Science professional specializing in AI research reproduction and practical applications."
+  bio    : "Applied Data Science professional specializing in AI research reproduction and practical applications. Email: brycew6m@stanford.edu"
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
