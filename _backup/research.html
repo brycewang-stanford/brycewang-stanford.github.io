@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - Bryce Wang</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #ffffff;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #10a37f, #1a73e8);
+            border-radius: 1px;
+        }
+
+        .nav-links a:hover {
+            color: #10a37f;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1a1a1a, #10a37f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 4rem 0;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+        }
+
+        .research-area {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid #10a37f;
+        }
+
+        .research-area h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .research-area p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .keyword {
+            background: #e2e8f0;
+            color: #1a1a1a;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Publications */
+        .publication {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .publication-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .publication-authors {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-venue {
+            color: #10a37f;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .publication-abstract {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .publication-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .publication-link {
+            padding: 0.5rem 1rem;
+            background: #10a37f;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .publication-link:hover {
+            background: #0d8a6a;
+        }
+
+        .publication-link.secondary {
+            background: #e2e8f0;
+            color: #1a1a1a;
+        }
+
+        .publication-link.secondary:hover {
+            background: #cbd5e0;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .content-section {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Bryce Wang</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="research.html" class="active">Research</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Research</h1>
+                <p class="hero-subtitle">Exploring the frontiers of artificial intelligence and human-computer interaction</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Research Areas</h2>
+            
+            <div class="research-area">
+                <h3>🤖 Artificial Intelligence & Machine Learning</h3>
+                <p>Developing novel algorithms for deep learning, reinforcement learning, and neural architecture search. Focus on creating more efficient and interpretable AI systems.</p>
+                <div class="keywords">
+                    <span class="keyword">Deep Learning</span>
+                    <span class="keyword">Neural Networks</span>
+                    <span class="keyword">Reinforcement Learning</span>
+                    <span class="keyword">AutoML</span>
+                </div>
+            </div>
+
+            <div class="research-area">
+                <h3>💬 Natural Language Processing</h3>
+                <p>Research in language understanding, generation, and multimodal AI systems. Working on improving human-AI communication and developing more sophisticated language models.</p>
+                <div class="keywords">
+                    <span class="keyword">Large Language Models</span>
+                    <span class="keyword">Text Generation</span>
+                    <span class="keyword">Multimodal AI</span>
+                    <span class="keyword">Dialogue Systems</span>
+                </div>
+            </div>
+
+            <div class="research-area">
+                <h3>🔍 Computer Vision</h3>
+                <p>Advancing visual understanding through deep learning approaches. Research includes object detection, image generation, and visual reasoning systems.</p>
+                <div class="keywords">
+                    <span class="keyword">Object Detection</span>
+                    <span class="keyword">Image Generation</span>
+                    <span class="keyword">Visual Reasoning</span>
+                    <span class="keyword">3D Vision</span>
+                </div>
+            </div>
+
+            <div class="research-area">
+                <h3>🎮 Human-Computer Interaction</h3>
+                <p>Designing intuitive interfaces and studying human behavior in AI-assisted environments. Focus on making AI more accessible and user-friendly.</p>
+                <div class="keywords">
+                    <span class="keyword">UI/UX Design</span>
+                    <span class="keyword">User Studies</span>
+                    <span class="keyword">AI Interfaces</span>
+                    <span class="keyword">Accessibility</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Publications</h2>
+            
+            <div class="publication">
+                <h3 class="publication-title">Advancing Neural Architecture Search with Efficient Sampling Strategies</h3>
+                <p class="publication-authors"><strong>Bryce Wang</strong>, Jane Smith, Dr. Michael Johnson</p>
+                <p class="publication-venue">International Conference on Machine Learning (ICML) 2024</p>
+                <p class="publication-abstract">We propose a novel sampling strategy for neural architecture search that reduces computational overhead by 60% while maintaining competitive performance. Our approach leverages evolutionary algorithms combined with gradient-based optimization to efficiently explore the architecture space.</p>
+                <div class="publication-links">
+                    <a href="#" class="publication-link">Paper</a>
+                    <a href="#" class="publication-link secondary">Code</a>
+                    <a href="#" class="publication-link secondary">Slides</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <h3 class="publication-title">Multimodal Learning for Enhanced Human-AI Collaboration</h3>
+                <p class="publication-authors"><strong>Bryce Wang</strong>, Dr. Sarah Chen, Prof. David Lee</p>
+                <p class="publication-venue">Conference on Human Factors in Computing Systems (CHI) 2024</p>
+                <p class="publication-abstract">This work explores how multimodal AI systems can better understand human intent through combined visual, textual, and gestural inputs. We demonstrate significant improvements in task completion rates and user satisfaction in collaborative scenarios.</p>
+                <div class="publication-links">
+                    <a href="#" class="publication-link">Paper</a>
+                    <a href="#" class="publication-link secondary">Demo</a>
+                    <a href="#" class="publication-link secondary">Video</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <h3 class="publication-title">Interpretable Deep Learning for Medical Image Analysis</h3>
+                <p class="publication-authors">Dr. Emily Rodriguez, <strong>Bryce Wang</strong>, Prof. Robert Kim</p>
+                <p class="publication-venue">Nature Machine Intelligence 2023</p>
+                <p class="publication-abstract">We develop an interpretable deep learning framework for medical image analysis that provides both accurate predictions and clinically meaningful explanations. The method achieves state-of-the-art performance on multiple medical imaging benchmarks.</p>
+                <div class="publication-links">
+                    <a href="#" class="publication-link">Paper</a>
+                    <a href="#" class="publication-link secondary">Dataset</a>
+                    <a href="#" class="publication-link secondary">Supplement</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <h3 class="publication-title">Federated Learning with Privacy-Preserving Mechanisms</h3>
+                <p class="publication-authors"><strong>Bryce Wang</strong>, Dr. Lisa Zhang, Prof. Mark Thompson</p>
+                <p class="publication-venue">IEEE Transactions on Information Forensics and Security 2023</p>
+                <p class="publication-abstract">We present a federated learning framework that incorporates differential privacy and secure aggregation to protect user data while maintaining model performance. Our approach shows promising results on large-scale distributed datasets.</p>
+                <div class="publication-links">
+                    <a href="#" class="publication-link">Paper</a>
+                    <a href="#" class="publication-link secondary">Code</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Research Interests</h2>
+            <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #666; margin-bottom: 1.5rem;">
+                    My research is driven by the vision of creating AI systems that are not only powerful but also trustworthy, interpretable, and beneficial to society. I'm particularly interested in the intersection of machine learning and human-computer interaction, where technology meets human needs.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #666; margin-bottom: 1.5rem;">
+                    Currently, I'm exploring how large language models can be made more efficient and reliable, with a focus on developing methods for better human-AI collaboration. I believe that the future of AI lies in systems that can work seamlessly with humans while being transparent about their capabilities and limitations.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #666;">
+                    I'm always open to collaborations and discussions about research opportunities. If you're interested in working together or have ideas to share, please don't hesitate to reach out!
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Bryce Wang. All rights reserved.</p>
+    </footer>
+</body>
+</html>

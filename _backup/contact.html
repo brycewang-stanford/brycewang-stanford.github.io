@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Bryce Wang</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #ffffff;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e5e5;
+            z-index: 1000;
+            padding: 24px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a.active,
+        .nav-links a:hover {
+            color: #1a1a1a;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .hero-section {
+            background-color: #ffffff;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .hero-title {
+            font-size: 64px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 80px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            margin-bottom: 64px;
+        }
+
+        .contact-info {
+            background: #fafafa;
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid #e5e5e5;
+        }
+
+        .contact-info h2 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding: 16px;
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #e5e5e5;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .contact-method:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            font-size: 20px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1a1a1a;
+            color: white;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .contact-details h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #1a1a1a;
+        }
+
+        .contact-details p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .contact-details a {
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-details a:hover {
+            color: #666;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: #fafafa;
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid #e5e5e5;
+        }
+
+        .contact-form h2 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #1a1a1a;
+            font-size: 16px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e5e5e5;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+            font-family: inherit;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1a1a1a;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #333;
+        }
+
+        /* Social Links */
+        .social-section {
+            background: #fafafa;
+            padding: 80px 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #e5e5e5;
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-link.github,
+        .social-link.linkedin,
+        .social-link.twitter,
+        .social-link.email,
+        .social-link.scholar {
+            color: #1a1a1a;
+        }
+
+        /* Location Section */
+        .location-section {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .location-card {
+            background: #fafafa;
+            border-radius: 12px;
+            padding: 48px;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #e5e5e5;
+        }
+
+        .location-card h2 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
+        }
+
+        .location-details {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            
+            .nav-links {
+                gap: 16px;
+            }
+            
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .nav-container {
+                padding: 0 16px;
+            }
+            
+            .content-section {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+            
+            .social-links {
+                gap: 16px;
+            }
+            
+            .contact-info,
+            .contact-form {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Bryce Wang</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Get In Touch</h1>
+                <p class="hero-subtitle">Let's connect and explore opportunities for collaboration</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Contact Information</h2>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p><a href="mailto:bryce.wang@stanford.edu">bryce.wang@stanford.edu</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>Stanford University<br>Stanford, CA 94305</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-icon">💼</div>
+                        <div class="contact-details">
+                            <h3>Office</h3>
+                            <p>Gates Computer Science Building<br>Room 392</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>+1 (650) 123-4567</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-icon">🕒</div>
+                        <div class="contact-details">
+                            <h3>Office Hours</h3>
+                            <p>Tuesdays & Thursdays<br>2:00 PM - 4:00 PM PST</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h2>Send Message</h2>
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required placeholder="Tell me about your project, research idea, or collaboration opportunity..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="social-section">
+            <div class="content-section">
+                <h2 style="text-align: center; font-size: 32px; font-weight: 600; margin-bottom: 32px; color: #1a1a1a; letter-spacing: -0.02em;">Connect With Me</h2>
+                <div class="social-links">
+                    <a href="https://github.com/bryceywang" class="social-link github" target="_blank">
+                        🐱
+                    </a>
+                    <a href="https://linkedin.com/in/bryceywang" class="social-link linkedin" target="_blank">
+                        💼
+                    </a>
+                    <a href="https://twitter.com/bryceywang" class="social-link twitter" target="_blank">
+                        🐦
+                    </a>
+                    <a href="mailto:bryce.wang@stanford.edu" class="social-link email">
+                        ✉️
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=abc123" class="social-link scholar" target="_blank">
+                        🎓
+                    </a>
+                </div>
+                <p style="text-align: center; color: #666; font-size: 18px;">
+                    Follow me for updates on my research, projects, and thoughts on AI and technology
+                </p>
+            </div>
+        </section>
+
+        <section class="location-section">
+            <div class="content-section">
+                <div class="location-card">
+                    <h2>🏫 Current Location</h2>
+                    <div class="location-details">
+                        <p><strong>Stanford University</strong></p>
+                        <p>Computer Science Department</p>
+                        <p>PhD Student in Artificial Intelligence</p>
+                        <br>
+                        <p>I'm currently based at Stanford University where I'm pursuing my PhD in Computer Science with a focus on artificial intelligence and machine learning. Feel free to visit me during office hours or reach out to schedule a meeting!</p>
+                        <br>
+                        <p><strong>Best ways to reach me:</strong></p>
+                        <p>📧 Email for academic inquiries</p>
+                        <p>💼 LinkedIn for professional networking</p>
+                        <p>🐱 GitHub for code collaboration</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div style="background: #fafafa; border-radius: 12px; padding: 48px; text-align: center; border: 1px solid #e5e5e5;">
+                <h2 style="font-size: 32px; font-weight: 600; margin-bottom: 16px; color: #1a1a1a; letter-spacing: -0.02em;">Ready to Collaborate?</h2>
+                <p style="font-size: 18px; margin-bottom: 32px; color: #666; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Whether you're interested in research collaboration, have a project idea, or just want to chat about AI and technology, I'd love to hear from you. Let's build something amazing together!
+                </p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="mailto:bryce.wang@stanford.edu" style="display: inline-block; padding: 12px 24px; background: #1a1a1a; color: white; text-decoration: none; border-radius: 6px; font-weight: 500; transition: background-color 0.2s;">
+                        📧 Email Me
+                    </a>
+                    <a href="research.html" style="display: inline-block; padding: 12px 24px; background: transparent; color: #1a1a1a; text-decoration: none; border-radius: 6px; font-weight: 500; border: 1px solid #e5e5e5; transition: background-color 0.2s;">
+                        🔬 View Research
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Bryce Wang. All rights reserved.</p>
+    </footer>
+</body>
+</html>
